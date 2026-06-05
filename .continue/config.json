@@ -1,0 +1,25 @@
+{
+  "models": [{
+    "title": "DeepSeek V3",
+    "provider": "openai",
+    "model": "deepseek-v3",
+    "apiBase": "http://localhost:4000",
+    "apiKey": "sk-litellm-proxy"
+  }],
+  "tabAutocompleteModel": {
+    "title": "Qwen-Coder-7B",
+    "provider": "ollama",
+    "model": "qwen2.5-coder:7b"
+  },
+  "experimental": {
+    "memory": {
+      "provider": "mem0",
+      "config": {
+        "collection_name": "gao_4a_workspace",
+        "auto_memory_extraction": true,
+        "temporal_reasoning": true
+      }
+    }
+  },
+  "rules": [{"path": "${workspaceFolder}/.continue/rules.md", "alwaysInclude": true}]
+}

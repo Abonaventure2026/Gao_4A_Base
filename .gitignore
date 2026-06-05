@@ -1,0 +1,12 @@
+build/
+*.o
+*.a
+*.so
+*.exe
+.vscode/
+.idea/
+__pycache__/
+*.log
+models/*.onnx
+*.enc
+*.sig

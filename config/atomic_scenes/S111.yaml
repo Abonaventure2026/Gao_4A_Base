@@ -1,0 +1,18 @@
+atomic_scene: 111
+description: S111 原子场景 - 等级 G1 (T空间)
+space: T
+environment:
+  illumination_lux: 200
+  dynamic_objects: 0
+  gps_available: true
+safety:
+  goal: QM
+  min_ttc: 0.0
+  max_speed_ratio: 1.0
+  grade: G1
+  redundancy_level: 0
+fusion_weights:
+  rule: 0.95
+  va: 0.05
+  vla: 0.00
+  world_model: 0.00

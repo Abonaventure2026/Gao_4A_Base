@@ -1,0 +1,34 @@
+project:
+  name: "Gao_4A_Autopilot"
+  language: cpp20
+  build_system: cmake
+  style_guide: "Google C++ Style Guide"
+  structure:
+    workspace_root: "."
+    forbidden_roots: ["build", "install", "log", "third_party"]
+    allowed_new_packages: "src/"
+    locked_files:
+      - "src/common/math/**"
+      - "src/common/filters/ekf.h"
+      - "src/control/pid_controller.h"
+      - "CMakeLists.txt"
+      - "config/atomic_scenes/*.yaml"
+  coding_rules:
+    - "所有数学运算使用 gao::math 命名空间"
+    - "禁止使用 new/delete，用 std::unique_ptr"
+    - "新增功能必须带单元测试"
+    - "代码复用率 ≥95%，优先调用基座模块"
+    - "安全关键函数必须 100% MC/DC 覆盖"
+    - "实时控制模块禁止动态内存分配"
+  dependency_policy:
+    add_only_via: "CMakeLists.txt"
+    allowed_third_party: ["Eigen3", "yaml-cpp", "OpenCV"]
+  agent_policy:
+    max_simultaneous_files: 3
+    allowed_commands: ["cmake", "make", "ctest", "git"]
+    forbidden_directories: ["deploy", "docs", ".github"]
+  safety_mapping:
+    G1: { redundancy: "none", switch_time_ms: 0 }
+    G2: { redundancy: "soft", switch_time_ms: 100 }
+    G3: { redundancy: "hw+sw", switch_time_ms: 50 }
+    G4: { redundancy: "full", switch_time_ms: 10 }

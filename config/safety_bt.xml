@@ -1,0 +1,18 @@
+<root main_tree_to_execute="SafetyTree">
+    <BehaviorTree>
+        <Sequence name="SafetyTree">
+            <Fallback name="CheckSensors">
+                <Condition name="SensorFault"> sensor_fault == false </Condition>
+                <Action name="TriggerFailsafe"> failsafe_mode = "sensor_fault" </Action>
+            </Fallback>
+            <Fallback name="CheckCommunication">
+                <Condition name="CommTimeout"> time_since_heartbeat < 0.5 </Condition>
+                <Action name="TriggerFailsafe"> failsafe_mode = "comm_loss" </Action>
+            </Fallback>
+            <Fallback name="CheckControlDeviation">
+                <Condition name="DeviationOK"> |cmd - actual| < 5.0 </Condition>
+                <Action name="TriggerFailsafe"> failsafe_mode = "control_error" </Action>
+            </Fallback>
+        </Sequence>
+    </BehaviorTree>
+</root>

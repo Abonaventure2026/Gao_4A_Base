@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "filesystem": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "."] },
+    "git": { "command": "uvx", "args": ["mcp-server-git", "--repository", "."] },
+    "cmake": { "command": "python", "args": ["-m", "mcp_cmake_server"], "env": {"CMAKE_BUILD_TYPE": "Release"} },
+    "ctest": { "command": "python", "args": ["-m", "mcp_ctest_server"] },
+    "safety_island": { "command": "python", "args": ["-m", "mcp_safety_island"], "env": {"SAFETY_LEVEL": "ASIL-D"} }
+  }
+}
